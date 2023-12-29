@@ -1,0 +1,36 @@
+import sys
+import numpy
+import pandas
+import matplotlib
+import seaborn
+import scipy
+import sklearn
+
+
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+
+data=pd.read_csv("creditcard.csv")
+
+print(data.columns)
+
+print(data.shape)
+
+print(data.describe())
+
+data=data.sample(frac=0.1,random_state=1)
+print(data.shape)
+
+data.hist(figsize=(20,20))
+plt.show()
+
+fraud_cases=data[data["Class"] ==1]
+valid_cases=data[data["Class"] ==0]
+
+Outlier_fraction=len(fraud_cases)/float(len(valid_cases))
+print(Outlier_fraction)
+print("fraud cases {}".format(len(fraud_cases)))
+print("valid cases {}".format(len(valid_cases)))
